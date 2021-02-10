@@ -10,12 +10,13 @@ class Generator{
 
  public:
   Generator();
-  Generator(string nameFile);
-  string getName(int key);
-  bool hasValidInputFile(); 
+  Generator(string);
+  void encrypt(string);
  private:
   string userID;	
   string pass;
-  int rand;
+  string makePw();
+  string key;
+  void cipher(string);
 };
 #endif // GENERATOR_H

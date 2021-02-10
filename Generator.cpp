@@ -6,6 +6,7 @@ Generator::Generator()
 }
 Generator::Generator(string nameFile)
 {
+ int id = 1;
  string line;
  ofstream newFile;
  newFile.open("raw.txt");
@@ -17,11 +18,12 @@ Generator::Generator(string nameFile)
   while(myFile>>line)
   {
    if(i%4==0)
-  newFile << line + '\n'; 
+   newFile << id++ << " " << line << " " << makePw() + '\n'; 
    i++;
   }
  
  myFile.close();
+ newFile.close();
  
  }
  else
@@ -29,14 +31,57 @@ Generator::Generator(string nameFile)
   cout<<"file failed to open.\n";
  }
 }
-std::string Generator::getName(int key)
-{
- return "fixme";
+string Generator::makePw(){
+ string pw = ""; 
+ for(int i = 0; i < 9; i++)
+ {
+  int num = rand() % 25  + 97;
+  pw += (char)num;
+ }
 
+ return pw;
 }
 
-bool Generator::hasValidInputFile()
+void Generator::encrypt(string key)
 {
-	return false;
-
+ string readLine;
+ this->key = key;
+ int i = 1;
+ fstream rawFile("raw.txt"); 
+ while(rawFile>>readLine)
+ {
+  if(i%3==0)
+  {
+  cipher(readLine);
+  }
+  i++;
+ }
 }
+void Generator::cipher(string pw)
+{
+ string fullkey = key;
+ string cipher = "";
+ int value;
+ if(pw.size() >  key.size() )
+ {
+  for(int i = 0; i < (pw.size() - key.size()); i++) 
+   {
+    fullkey += key.at(i);
+   }
+ }
+ //go through each letter of the pass and swap letters with respect to key
+ for(int i = 0; i < pw.size(); i++){
+  //(char - 'a') + key if bigger than 122  - 26
+  value = (pw.at(i) - 'a') + fullkey.at(i);
+  if(value > 122 )
+  {
+   value -= 26;
+  }
+  char x = value; 
+  cipher += x;
+}
+ 
+  cout << cipher; 
+  cout << ' ';
+}
+ 
