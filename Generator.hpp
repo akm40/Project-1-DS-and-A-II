@@ -17,6 +17,6 @@ class Generator{
   string pass;
   string makePw();
   string key;
-  void cipher(string);
+  string cipher(string);
 };
 #endif // GENERATOR_H

@@ -45,6 +45,8 @@ string Generator::makePw(){
 void Generator::encrypt(string key)
 {
  string readLine;
+ ofstream cryptFile;
+ cryptFile.open("FIXME.txt");
  this->key = key;
  int i = 1;
  fstream rawFile("raw.txt"); 
@@ -52,12 +54,14 @@ void Generator::encrypt(string key)
  {
   if(i%3==0)
   {
-  cipher(readLine);
+   cryptFile << cipher(readLine);
+   cryptFile << '\n';
   }
   i++;
  }
+ cryptFile.close();
 }
-void Generator::cipher(string pw)
+string Generator::cipher(string pw)
 {
  string fullkey = key;
  string cipher = "";
@@ -81,7 +85,6 @@ void Generator::cipher(string pw)
   cipher += x;
 }
  
-  cout << cipher; 
-  cout << ' ';
+ return cipher; 
 }
  
