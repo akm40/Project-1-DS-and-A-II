@@ -27,4 +27,15 @@ void HashTable::insert(string userID,string pw)
  table[bucket].push_back(pw);
 }
 
-//void HashTable::getPw(string userID)
+
+string HashTable::isMatch(string userID, string pw)
+{
+ int id = hash(userID);
+ int bucket = id % this->buckets;
+ string temp = ""; 
+ list<string>::iterator it;
+ for(it = table[bucket].begin(); it != table[bucket].end(); it++){
+  if(pw.compare(*it)==0) return "match";
+ }
+ return "no match";
+}

@@ -6,7 +6,6 @@ Generator::Generator()
 }
 Generator::Generator(string nameFile)
 {
- int id = 1;
  string line;
  ofstream newFile;
  newFile.open("raw.txt");
@@ -18,7 +17,9 @@ Generator::Generator(string nameFile)
   while(myFile>>line)
   {
    if(i%4==0)
-   newFile << id++ << " " << line << " " << makePw() + '\n'; 
+   {
+    newFile << line << ' ' << makePw() + '\n'; 
+   }
    i++;
   }
  
@@ -48,16 +49,14 @@ void Generator::encrypt(string key)
  ofstream cryptFile;
  cryptFile.open("encrypted.txt");
  this->key = key;
- int i = 1;
  fstream rawFile("raw.txt"); 
- while(rawFile>>readLine)
+ while(rawFile >> readLine)
  {
-  if(i%3==0)
-  {
-   cryptFile << cipher(readLine);
-   cryptFile << '\n';
-  }
-  i++;
+  cryptFile << readLine;
+  cryptFile << " ";
+  rawFile >> readLine;
+  cryptFile << cipher(readLine);
+  cryptFile << '\n';
  }
  cryptFile.close();
 }
