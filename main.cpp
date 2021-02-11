@@ -4,10 +4,9 @@
 int main(){
  //Generator gen("lastNames.txt");
  //gen.encrypt("jones");
- HashTable myHash(10);
- myHash.insert("test","one");
- cout << myHash.isMatch("test","one");
- cout << myHash.isMatch("test","two");
- //myHash.fill("encrypted.txt");
+ HashTable myHash(88799);
+ myHash.fill("encrypted.txt");
+ cout << myHash.isMatch("SMITH","rzptktzec");
+
 return 0;	
 }

@@ -1,6 +1,7 @@
 #ifndef HASHTABLE_H 
 #define HASHTABLE_H
 #include <iostream>
+#include <fstream>
 #include <list>
 
 
@@ -11,11 +12,11 @@ class HashTable
   int buckets;
   list<string>*table;
   int hash(string);
-  void fill(string);
  public:
   HashTable(int);
   void insert(string, string);
   string isMatch(string, string);
+  void fill(string);
 };
 
 #endif // HASHTABLE_H

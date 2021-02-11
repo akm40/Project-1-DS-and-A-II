@@ -22,8 +22,7 @@ void HashTable::insert(string userID,string pw)
 {
  //unique number gets you to location of stored pw
  int id = hash(userID);
- int bucket = id % this->buckets;
-
+ int bucket = id & this->buckets - 1;
  table[bucket].push_back(pw);
 }
 
@@ -31,11 +30,30 @@ void HashTable::insert(string userID,string pw)
 string HashTable::isMatch(string userID, string pw)
 {
  int id = hash(userID);
- int bucket = id % this->buckets;
+ int bucket = id & this->buckets - 1;
  string temp = ""; 
  list<string>::iterator it;
  for(it = table[bucket].begin(); it != table[bucket].end(); it++){
   if(pw.compare(*it)==0) return "match";
  }
  return "no match";
+}
+
+void HashTable::fill(string filename)
+{
+ string line;
+ string id;
+ string pw;
+ fstream myFile(filename.c_str());
+ if(myFile.is_open())
+ {
+  while (myFile >> line)
+  {
+   id = line;
+   myFile >> line;
+   pw = line;
+   insert(id,pw);
+  }
+ }
+ myFile.close();
 }

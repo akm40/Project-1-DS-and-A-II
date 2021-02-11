@@ -1,9 +1,5 @@
 #include "Generator.hpp"
 
-Generator::Generator()
-{
-
-}
 Generator::Generator(string nameFile)
 {
  string line;
