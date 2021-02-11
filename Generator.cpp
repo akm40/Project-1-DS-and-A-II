@@ -46,7 +46,7 @@ void Generator::encrypt(string key)
 {
  string readLine;
  ofstream cryptFile;
- cryptFile.open("FIXME.txt");
+ cryptFile.open("encrypted.txt");
  this->key = key;
  int i = 1;
  fstream rawFile("raw.txt"); 
