@@ -7,7 +7,7 @@
 
 using namespace std;
 class Generator{
-
+friend class HashTable;
  public:
   Generator();
   Generator(string);
@@ -16,7 +16,6 @@ class Generator{
   string userID;	
   string pass;
   string makePw();
-  string key;
-  string cipher(string);
+  static string cipher(string, string);
 };
 #endif // GENERATOR_H

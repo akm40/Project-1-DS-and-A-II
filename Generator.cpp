@@ -44,19 +44,18 @@ void Generator::encrypt(string key)
  string readLine;
  ofstream cryptFile;
  cryptFile.open("encrypted.txt");
- this->key = key;
  fstream rawFile("raw.txt"); 
  while(rawFile >> readLine)
  {
   cryptFile << readLine;
   cryptFile << " ";
   rawFile >> readLine;
-  cryptFile << cipher(readLine);
+  cryptFile << cipher(readLine, key);
   cryptFile << '\n';
  }
  cryptFile.close();
 }
-string Generator::cipher(string pw)
+string Generator::cipher(string pw, string key)
 {
  string fullkey = key;
  string cipher = "";

@@ -4,7 +4,6 @@
 #include <fstream>
 #include <list>
 
-
 using namespace std;
 class HashTable
 {
@@ -15,7 +14,7 @@ class HashTable
  public:
   HashTable(int);
   void insert(string, string);
-  string isMatch(string, string);
+  string isMatch(string, string, string);
   void fill(string);
 };
 

@@ -1,5 +1,5 @@
 #include "HashTable.hpp"
-
+#include "Generator.cpp"
 HashTable::HashTable(int buckets)
 {
  this->buckets = buckets;
@@ -27,14 +27,16 @@ void HashTable::insert(string userID,string pw)
 }
 
 
-string HashTable::isMatch(string userID, string pw)
+string HashTable::isMatch(string userID, string pw, string key)
 {
+ string password = pw;
+ password = Generator::cipher(password, key);
  int id = hash(userID);
  int bucket = id & this->buckets - 1;
  string temp = ""; 
  list<string>::iterator it;
  for(it = table[bucket].begin(); it != table[bucket].end(); it++){
-  if(pw.compare(*it)==0) return "match";
+  if(password.compare(*it)==0) return "match";
  }
  return "no match";
 }
