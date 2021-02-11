@@ -1,5 +1,4 @@
 #include "HashTable.hpp"
-#include "Generator.cpp"
 HashTable::HashTable(int buckets)
 {
  this->buckets = buckets;

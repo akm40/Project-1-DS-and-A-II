@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <list>
-
+#include "Generator.hpp"
 using namespace std;
 class HashTable
 {
