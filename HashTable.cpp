@@ -1,10 +1,17 @@
+/************************************************
+ * Andrew Mathis
+ * HashTable.hpp
+ * Project 1
+ *
+ * Class for making a hashtable and storing the userID and password 
+ * *********************************************/
 #include "HashTable.hpp"
 HashTable::HashTable(int buckets)
 {
  this->buckets = buckets;
  table = new list<string>[buckets];
 }
-
+//create a hash of each userID
 int HashTable::hash(string id)
 {
  int x = 17;
@@ -16,7 +23,7 @@ int HashTable::hash(string id)
  }
  return hash;
 }
-
+//inerts passwords into buckets
 void HashTable::insert(string userID,string pw)
 {
  //unique number gets you to location of stored pw
@@ -25,7 +32,7 @@ void HashTable::insert(string userID,string pw)
  table[bucket].push_back(pw);
 }
 
-
+//check if username/password is invalid
 string HashTable::isMatch(string userID, string pw, string key)
 {
  string password = pw;
@@ -39,7 +46,7 @@ string HashTable::isMatch(string userID, string pw, string key)
  }
  return "no match";
 }
-
+//takes a file of username and encrypted passwords and puts them all into the hashtable
 void HashTable::fill(string filename)
 {
  string line;

@@ -1,15 +1,24 @@
+/************************************************
+ * Andrew Mathis
+ * Generator.cpp
+ * Project 1
+ *
+ * generate raw and encrypted files from lastNames.txt
+ * *********************************************/
 #include "Generator.hpp"
 
 Generator::Generator(string nameFile)
 {
  string line;
+ //make and open raw.txt as well as open file passed to constructor
  ofstream newFile;
  newFile.open("raw.txt");
  fstream myFile(nameFile.c_str());
- if(myFile.is_open())
+if(myFile.is_open())
  {
   cout<<"opened file\n";
   int i = 0;
+  //Parse just the last name from lastname file into raw.txt
   while(myFile>>line)
   {
    if(i%4==0)
@@ -28,6 +37,7 @@ Generator::Generator(string nameFile)
   cout<<"file failed to open.\n";
  }
 }
+//Generate a random 9 character  password
 string Generator::makePw(){
  string pw = ""; 
  for(int i = 0; i < 9; i++)
@@ -38,7 +48,7 @@ string Generator::makePw(){
 
  return pw;
 }
-
+//put usernames and  encrypted passwords into new file encrypted.txt 
 void Generator::encrypt(string key)
 {
  string readLine;
@@ -55,6 +65,7 @@ void Generator::encrypt(string key)
  }
  cryptFile.close();
 }
+//encrypt password
 string Generator::cipher(string pw, string key)
 {
  string fullkey = key;

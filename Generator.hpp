@@ -1,3 +1,10 @@
+/************************************************
+ * Andrew Mathis
+ * Generator.hpp
+ * Project 1
+ *
+ * generate raw and encrypted files from lastNames.txt
+ * *********************************************/
 #ifndef GENERATOR_H
 #define GENERATOR_H
 #include <iostream>

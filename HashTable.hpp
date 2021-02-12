@@ -1,3 +1,10 @@
+/************************************************
+ * Andrew Mathis
+ * HashTable.hpp
+ * Project 1
+ *
+ * Make a hash table to store the userID and encrypted password
+ * *********************************************/
 #ifndef HASHTABLE_H 
 #define HASHTABLE_H
 #include <iostream>
